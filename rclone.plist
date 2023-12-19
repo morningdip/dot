@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Label</key>
+		    <string>rclone.mount</string>
+  		<key>RunAtLoad</key>
+		    <true/>
+		<key>KeepAlive</key>
+			<true/>
+		<key>ProgramArguments</key>
+			<array>
+				<string>/usr/local/bin/rclone</string>
+				<string>mount</string>
+                                <string>--allow-other</string>
+				<string>--allow-non-empty</string>
+                                <string>--contimeout=5s</string>
+                                <string>--tpslimit=10</string>
+                                <string>--tpslimit-burst=30</string>
+                                <string>--timeout=30s</string>
+                                <string>--transfers=8</string>
+                                <string>--buffer-size=128M</string>
+                                <string>--low-level-retries=10</string>
+                                <string>--vfs-read-chunk-size=256M</string>
+                                <string>--vfs-read-chunk-size-limit=1G</string>
+                                <string>--vfs-cache-mode=writes</string>
+                                <string>--volname=Onedrive</string>
+				<string>onedrive:</string>
+				<string>/Users/<USER>/Onedrive</string>	
+			</array>
+	</dict>
+</plist>
