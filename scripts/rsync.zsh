@@ -15,6 +15,12 @@ SYNC_DST="/home/user/dst"
 # Log file
 LOG_FILE="/var/log/rsync.log"
 
+# Username
+USERNMAE="username"
+
+# Remote server
+REMOTE="remote"
+
 # Check that the log file exists
 if [ ! -e "$LOG_FILE" ]; then
     touch "$LOG_FILE"
@@ -31,20 +37,19 @@ else
 fi
 
 # Start sync
-echo "$(date "+%Y-%m-%d %k:%M:%S") [INFO] Sync started." | tee "$LOG_FILE"
-rsync -avz --progress --partial --append "$SYNC_SRC" user@remote:"$SYNC_DST" &&
+echo "$(date "+%Y-%m-%d %k:%M:%S") [INFO] Sync started." | tee "$LOG_FILE" & 
+rsync -avz --progress --partial --append "$SYNC_SRC" "$USERNMAE"@"$REMOTE":"$SYNC_DST" &
+RSYNC_PID=$!
 
-# End entry in the log
-echo "" >> "$LOG_FILE" &&
+wait "$RSYNC_PID"
+EXIT_CODE=$?
 
-if [ "$?" -eq "0" ]; then
-    EXIT_MSG="The rsync command completed successfully"
-elif [ "$?" -eq "20" ]; then
-    EXIT_MSG="The rsync process was interrupted by user"
+if [ "$EXIT_CODE" -eq "0" ]; then
+    EXIT_MSG="上傳成功"
 else
-    EXIT_MSG="The rsync command failed with an error code $?"
+    EXIT_MSG="上傳失敗，錯誤代碼 $EXIT_CODE"
 fi
 
-curl "https://api.telegram.org/bot$BOT_TOKEN/sendMessage?chat_id=$CHAT_ID&text=$EXIT_MSG"
+curl "https://api.telegram.org/bot$BOT_TOKEN/sendMessage?chat_id=$CHAT_ID&text=${EXIT_MSG// /%20}"
 
 exit 0
