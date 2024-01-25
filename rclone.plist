@@ -12,18 +12,15 @@
 			<array>
 				<string>/usr/local/bin/rclone</string>
 				<string>mount</string>
-                                <string>--allow-other</string>
-				<string>--allow-non-empty</string>
-                                <string>--contimeout=5s</string>
-                                <string>--tpslimit=10</string>
-                                <string>--tpslimit-burst=30</string>
-                                <string>--timeout=30s</string>
-                                <string>--transfers=8</string>
-                                <string>--buffer-size=128M</string>
-                                <string>--low-level-retries=10</string>
-                                <string>--vfs-read-chunk-size=256M</string>
-                                <string>--vfs-read-chunk-size-limit=1G</string>
-                                <string>--vfs-cache-mode=writes</string>
+                                <string>--cache-dir=/tmp/rclone/vfs</string>
+                                <string>--multi-thread-streams=1024</string>
+                                <string>--multi-thread-cutoff=128M</string>
+                                <string>--vfs-cache-mode=full</string>
+                                <string>--vfs-cache-max-size=100G</string>
+                                <string>--vfs-cache-max-age=8760h</string>
+                                <string>--buffer-size=64K</string>
+                                <string>--vfs-read-chunk-size=64K</string>
+                                <string>--vfs-read-chunk-size-limit=64K</string>
                                 <string>--volname=Onedrive</string>
 				<string>onedrive:</string>
 				<string>/Users/<USER>/Onedrive</string>	
