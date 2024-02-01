@@ -1,0 +1,14 @@
+name: dipterm
+root: ~/
+attach: false
+on_project_exit:
+  - tmux -CC new -A -s dipterm
+
+windows:
+  - workspace:
+      root: ~/workspace
+      layout: tiled
+      panes:
+        - vim
+        - htop
+        - console
