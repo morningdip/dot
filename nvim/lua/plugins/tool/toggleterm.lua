@@ -21,7 +21,7 @@ return {
     vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
   end,
   keys = {
-    { "<leader>t", "<Cmd>exe v:count1 . 'ToggleTerm'<CR>" },
+    { "<leader>t", "<Cmd>exe v:count1 . 'ToggleTerm direction=horizontal'<CR>" },
     { "<leader>T", "<Cmd>exe v:count1 . 'ToggleTerm direction=vertical'<CR>" },
     { "<C-t>", "<Cmd>exe v:count1 . 'ToggleTerm direction=float'<CR>" },
   },
