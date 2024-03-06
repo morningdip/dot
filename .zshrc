@@ -1,4 +1,4 @@
-export pyenv_virtualenv_disable_prompt=1
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 if command -v pyenv >/dev/null 2>&1; then
   eval "$(pyenv init -)"
