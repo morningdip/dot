@@ -1,0 +1,17 @@
+# /etc/systemd/system/bot.service
+# sudo systemctl daemon-reload
+# sudo systemctl enable bot.service
+# sudo systemctl start bot.service
+
+[Unit]
+Description=Telegram Bot
+After=network.target
+
+[Service]
+Type=forking
+User=morningdip
+ExecStart=/usr/bin/screen -dmS bot /usr/bin/python3 /home/morningdip/bot/mybot.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
