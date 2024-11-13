@@ -1,0 +1,17 @@
+name: diptmux
+root: ~/
+tmux_options: -f ~/.tmux.conf
+attach: true
+
+windows:
+  - workspace:
+      root: ~/Workspace
+      layout: tiled
+      panes:
+        -
+        -
+  - brew:
+      -
+  - cloud: ssh morningdip@cloud.piedpiper.tw -t 'tmux new -As cloud'
+  - vultr: ssh morningdip@vultr.piedpiper.tw -t 'tmux new -As vultr'
+  - ikoa:  ssh morningdip@ikoa.piedpiper.tw -t 'tmux new -As ikoa'
